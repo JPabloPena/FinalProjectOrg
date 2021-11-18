@@ -1,20 +1,31 @@
 class JuegoVaqueros {
-    field Circulo circulo;
-    field Circulo circulo2;
+    field Vaquero vaquero1, vaquero2, vaquero3, vaquero4;
 
     constructor JuegoVaqueros new() {
-        let circulo = Circulo.new(170, 127, 5);
-        let circulo2 = Circulo.new(340, 127, 5);
+        let vaquero1 = Vaquero.new(0, 117, 20);
+        let vaquero2 = Vaquero.new(245, 0, 20);
+        let vaquero3 = Vaquero.new(490, 117, 20);
+        let vaquero4 = Vaquero.new(245, 234, 20);
         return this;
     }
 
     method void dispose() {
-        do circulo.dispose();
-        do circulo2.dispose();
+        do vaquero1.dispose();
+        do vaquero2.dispose();
+        do vaquero3.dispose();
+        do vaquero4.dispose();
         do Memory.deAlloc(this);
         return;
     }
 
+    method void dibujarTest() {
+        do vaquero1.dibujar();
+        do vaquero2.dibujar();
+        do vaquero3.dibujar();
+        do vaquero4.dibujar();
+        return;
+    }
+    /*
     method void run() {
         var char key;
         var char cont;
@@ -83,8 +94,9 @@ class JuegoVaqueros {
         }
         if (circulo.movimientoAutomatico() = 3) {
             do circulo.moverAbajoIzq();
-        }
+        }*/
         /* CIRCULO 2*/
+        /*
         if (circulo2.movimientoAutomatico() = 0) {
             do circulo2.moverArribaDer();
         }
@@ -98,5 +110,5 @@ class JuegoVaqueros {
             do circulo2.moverAbajoIzq();
         }
         return;
-    }
+    }*/
 }

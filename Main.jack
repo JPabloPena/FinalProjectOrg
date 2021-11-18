@@ -1,8 +1,9 @@
 class Main {
     function void main() {
-        var JuegoCirculo juego;
-        let juego = JuegoCirculo.new();
-        do juego.run();
+        var JuegoVaqueros juego;
+        let juego = JuegoVaqueros.new();
+        //do juego.run();
+        do juego.dibujarTest();
         do juego.dispose();
         return;
     }
