@@ -1,7 +1,7 @@
-class Circulo {
+class Vaquero {
     field int x, y, r, lugarAnterior, cont;
 
-    constructor Circulo new(int valor_x, int valor_y, int valor_r) {
+    constructor Vaquero new(int valor_x, int valor_y, int valor_r) {
         let x = valor_x;
         let y = valor_y;
         let r = valor_r;

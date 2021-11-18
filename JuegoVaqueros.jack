@@ -1,8 +1,8 @@
-class JuegoCirculo {
+class JuegoVaqueros {
     field Circulo circulo;
     field Circulo circulo2;
 
-    constructor JuegoCirculo new() {
+    constructor JuegoVaqueros new() {
         let circulo = Circulo.new(170, 127, 5);
         let circulo2 = Circulo.new(340, 127, 5);
         return this;
