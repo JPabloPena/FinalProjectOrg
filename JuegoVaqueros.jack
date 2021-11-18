@@ -1,0 +1,102 @@
+class JuegoCirculo {
+    field Circulo circulo;
+    field Circulo circulo2;
+
+    constructor JuegoCirculo new() {
+        let circulo = Circulo.new(170, 127, 5);
+        let circulo2 = Circulo.new(340, 127, 5);
+        return this;
+    }
+
+    method void dispose() {
+        do circulo.dispose();
+        do circulo2.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void run() {
+        var char key;
+        var char cont;
+        var boolean exit;
+        let exit = false;
+
+        while (~exit) {
+            let key = Keyboard.keyPressed();
+            while (key = 131) {
+                if (circulo.contador() < 8) {
+                    do pelota1();
+                }
+                if (circulo2.contador() < 8) {
+                    do pelota2();
+                }
+                if ((circulo.contador() = 8) & (circulo2.contador() = 8)) {
+                    let key = 0;
+                    let exit = true;
+                }          
+            }
+        }
+        return;
+    }
+    
+    method void pelota1() {
+        if (circulo.movimientoAutomatico() = 0) {
+            do circulo.moverArribaDer();
+        }
+        if (circulo.movimientoAutomatico() = 1) {
+            do circulo.moverArribaIzq();
+        }
+        if (circulo.movimientoAutomatico() = 2) {
+            do circulo.moverAbajoDer();
+        }
+        if (circulo.movimientoAutomatico() = 3) {
+            do circulo.moverAbajoIzq();
+        }
+        return;
+    }
+
+    method void pelota2() {
+        if (circulo2.movimientoAutomatico() = 0) {
+            do circulo2.moverArribaDer();
+        }
+        if (circulo2.movimientoAutomatico() = 1) {
+            do circulo2.moverArribaIzq();
+        }
+        if (circulo2.movimientoAutomatico() = 2) {
+            do circulo2.moverAbajoDer();
+        }
+        if (circulo2.movimientoAutomatico() = 3) {
+            do circulo2.moverAbajoIzq();
+        }
+        return;
+    }
+
+    method void juego() {
+        if (circulo.movimientoAutomatico() = 0) {
+            do circulo.moverArribaDer();
+        }
+        if (circulo.movimientoAutomatico() = 1) {
+            do circulo.moverArribaIzq();
+        }
+        if (circulo.movimientoAutomatico() = 2) {
+            do circulo.moverAbajoDer();
+        }
+        if (circulo.movimientoAutomatico() = 3) {
+            do circulo.moverAbajoIzq();
+        }
+        /* CIRCULO 2*/
+        if (circulo2.movimientoAutomatico() = 0) {
+            do circulo2.moverArribaDer();
+        }
+        if (circulo2.movimientoAutomatico() = 1) {
+            do circulo2.moverArribaIzq();
+        }
+        if (circulo2.movimientoAutomatico() = 2) {
+            do circulo2.moverAbajoDer();
+        }
+        if (circulo2.movimientoAutomatico() = 3) {
+            do circulo2.moverAbajoIzq();
+        }
+        return;
+    }
+}

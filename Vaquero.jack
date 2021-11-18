@@ -1,0 +1,150 @@
+class Circulo {
+    field int x, y, r, lugarAnterior, cont;
+
+    constructor Circulo new(int valor_x, int valor_y, int valor_r) {
+        let x = valor_x;
+        let y = valor_y;
+        let r = valor_r;
+        do dibujar();
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void dibujar() {
+        do Screen.setColor(true);
+        do Screen.drawCircle(x, y, r);
+        return;
+    }
+
+    method void velocidad() {
+        do Sys.wait(3);
+        return;
+    }
+
+    method void moverArribaDer() {
+        if ((y > r) & (x < (510 - r))) {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, r);
+            let x = x + 1;
+            let y = y - 1;
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, y, r);
+            do velocidad();
+        }
+        return;
+    }
+
+    method void moverArribaIzq() {
+        if ((y > r) & (x > (0 + r))) {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, r);
+            let x = x - 1;
+            let y = y - 1;
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, y, r);
+            do velocidad();
+        }
+        return;
+    }
+
+    method void moverAbajoDer() {
+        if ((y < (254 - r)) & (x < (510 - r))) {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, r);
+            let x = x + 1;
+            let y = y + 1;
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, y, r);
+            do velocidad();
+        }
+        return;
+    }
+
+    method void moverAbajoIzq() {
+        if ((y < (254 - r)) & (x > (0 + r))) {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, r);
+            let x = x - 1;
+            let y = y + 1;
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, y, r);
+            do velocidad();
+        }
+        return;
+    }
+
+    method int movimientoAutomatico() {
+        /*
+        0 -> ArrDer
+        1 -> ArrIzq
+        2 -> AbjDer
+        3 -> AbjIzq
+        */
+        if ((y = (254 - r)) & (lugarAnterior = 2)) { 
+            let lugarAnterior = 0;
+            let cont = cont + 1;
+            return lugarAnterior;
+        }
+        if ((y = (254 - r)) & (lugarAnterior = 3)) {
+            let lugarAnterior = 1;
+            let cont = cont + 1;
+            return lugarAnterior;
+        }
+        if ((y = (0 + r)) & (lugarAnterior = 0)) { 
+            let lugarAnterior = 2;
+            let cont = cont + 1;
+            return lugarAnterior;
+        }
+        if ((y = (0 + r)) & (lugarAnterior = 1)) {
+            let lugarAnterior = 3;
+            let cont = cont + 1;
+            return lugarAnterior;
+        } 
+        if ((x = (510 - r)) & (lugarAnterior = 0)) {
+            let lugarAnterior = 1;
+            let cont = cont + 1;
+            return lugarAnterior;
+        }
+        if ((x = (510 - r)) & (lugarAnterior = 2)) {
+            let lugarAnterior = 3;
+            let cont = cont + 1;
+            return lugarAnterior;
+        }
+        if ((x = (0 + r)) & (lugarAnterior = 3)) {
+            let lugarAnterior = 2;
+            let cont = cont + 1;
+            return lugarAnterior;
+        }
+        if ((x = (0 + r)) & (lugarAnterior = 1)) {
+            let lugarAnterior = 0;
+            let cont = cont + 1;
+            return lugarAnterior;
+        }
+    return lugarAnterior;
+    }
+
+    method int coor_x() {
+        return x;
+    }
+
+    method int coor_y() {
+        return y;
+    }
+
+    method int movimiento() {
+        return lugarAnterior;
+    }
+
+    method int contador() {
+        return cont;
+    }
+
+    method void modificarMovimiento(int nuevo_valor) {
+        let lugarAnterior = nuevo_valor;
+        return;
+    }
+}
