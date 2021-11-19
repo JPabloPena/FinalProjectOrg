@@ -1,11 +1,13 @@
 class JuegoVaqueros {
     field Vaquero vaquero1, vaquero2, vaquero3, vaquero4;
+    field Bala bala1;
 
     constructor JuegoVaqueros new() {
         let vaquero1 = Vaquero.new(0, 117, 20);
         let vaquero2 = Vaquero.new(245, 0, 20);
-        let vaquero3 = Vaquero.new(490, 117, 20);
-        let vaquero4 = Vaquero.new(245, 234, 20);
+        let vaquero3 = Vaquero.new(491, 117, 20);
+        let vaquero4 = Vaquero.new(245, 235, 20);
+        let bala1 = Bala.new(255, 127, 5);
         return this;
     }
 
@@ -18,12 +20,69 @@ class JuegoVaqueros {
         return;
     }
 
-    method void dibujarTest() {
-        do vaquero1.dibujar();
-        do vaquero2.dibujar();
-        do vaquero3.dibujar();
-        do vaquero4.dibujar();
+    method void run() {
+        var char key;
+        var boolean exit;  
+        
+        while (~exit) {
+            let key = Keyboard.keyPressed();
+            do movVaquero1(key);
+            do movVaquero2(key);
+            do movVaquero3(key);
+            do movVaquero4(key);
+            let exit = exit(key);
+        }  
         return;
+    }
+
+    method void movVaquero1(char key) {
+        if (key = 81) { //Letter: Q
+            do vaquero1.moverArriba();
+        }
+        if (key = 65) { //Letter: A
+            do vaquero1.moverAbajo();
+        }
+        if (key = 90) {
+            do bala1.moverDerecha();            
+        }
+        return;
+    }
+
+    method void movVaquero2(char key) {
+        if (key = 84) { //Letter: T
+            do vaquero2.moverIzquierda();
+        }
+        if (key = 89) { //Letter: Y
+            do vaquero2.moverDerecha();
+        }
+        return;
+    }
+
+    method void movVaquero3(char key) {
+        if (key = 79) { //Letter: O
+            do vaquero3.moverArriba();
+        }
+        if (key = 76) { //Letter: L
+            do vaquero3.moverAbajo();
+        }
+        return;
+    }
+
+    method void movVaquero4(char key) {
+        if (key = 86) { //Letter: T
+            do vaquero4.moverIzquierda();
+        }
+        if (key = 66) { //Letter: Y
+            do vaquero4.moverDerecha();
+        }
+        return;
+    }
+
+    method boolean exit(char key) {
+        if (key = 140) { //Key: ESC
+            return true;
+        }
+        return false;
     }
     /*
     method void run() {

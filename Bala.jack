@@ -1,7 +1,7 @@
-class Vaquero {
+class Bala {
     field int x, y, tamano, lugarAnterior, cont;
 
-    constructor Vaquero new(int valor_x, int valor_y, int valor_tamano) {
+    constructor Bala new(int valor_x, int valor_y, int valor_tamano) {
         let x = valor_x;
         let y = valor_y;
         let tamano = valor_tamano;
@@ -25,8 +25,60 @@ class Vaquero {
         return;
     }
 
+    method void moverArribaDer() {
+        if ((y > 0) & ((x + tamano) < 510)) {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x, y, x + tamano, y + tamano);
+            let x = x + 1;
+            let y = y - 1;
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x, y, x + tamano, y + tamano);
+            do velocidad();
+        }
+        return;
+    }
+    
+    method void moverArribaIzq() {
+        if ((y > 0) & (x > (0 + tamano))) {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x, y, x + tamano, y + tamano);
+            let x = x - 1;
+            let y = y - 1;
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x, y, x + tamano, y + tamano);
+            do velocidad();
+        }
+        return;
+    }
+    
+    method void moverAbajoDer() {
+        if (((y + tamano) < 254) & ((x + tamano) < 510)) {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x, y, x + tamano, y + tamano);
+            let x = x + 1;
+            let y = y + 1;
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x, y, x + tamano, y + tamano);
+            do velocidad();
+        }
+        return;
+    }
+    
+    method void moverAbajoIzq() {
+        if (((y + tamano) < 254) & (x > 0)) {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x, y, x + tamano, y + tamano);
+            let x = x - 1;
+            let y = y + 1;
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x, y, x + tamano, y + tamano);
+            do velocidad();
+        }
+        return;
+    }
+
     method void moverArriba() {
-        if (y > (1 + tamano)) {
+        if (y > 0) {
             do Screen.setColor(false);
             do Screen.drawRectangle(x, y, x + tamano, y + tamano);
             let y = y - 1;
@@ -38,7 +90,7 @@ class Vaquero {
     }
 
     method void moverAbajo() {
-        if ((y + tamano) < (254 - tamano)) {
+        if ((y + tamano) < 254) {
             do Screen.setColor(false);
             do Screen.drawRectangle(x, y, x + tamano, y + tamano);
             let y = y + 1;
@@ -50,7 +102,7 @@ class Vaquero {
     }
 
     method void moverIzquierda() {
-        if (x > (1 + tamano)) {
+        if (x > 0) {
             do Screen.setColor(false);
             do Screen.drawRectangle(x, y, x + tamano, y + tamano);
             let x = x - 1;
@@ -62,7 +114,7 @@ class Vaquero {
     }
 
     method void moverDerecha() {
-        if ((x + tamano) < (510 - tamano)) {
+        if ((x + tamano) < 510) {
             do Screen.setColor(false);
             do Screen.drawRectangle(x, y, x + tamano, y + tamano);
             let x = x + 1;
@@ -72,46 +124,7 @@ class Vaquero {
         }
         return;
     }
-    /*
-    method void moverArribaIzq() {
-        if ((y > r) & (x > (0 + r))) {
-            do Screen.setColor(false);
-            do Screen.drawCircle(x, y, r);
-            let x = x - 1;
-            let y = y - 1;
-            do Screen.setColor(true);
-            do Screen.drawCircle(x, y, r);
-            do velocidad();
-        }
-        return;
-    }
 
-    method void moverAbajoDer() {
-        if ((y < (254 - r)) & (x < (510 - r))) {
-            do Screen.setColor(false);
-            do Screen.drawCircle(x, y, r);
-            let x = x + 1;
-            let y = y + 1;
-            do Screen.setColor(true);
-            do Screen.drawCircle(x, y, r);
-            do velocidad();
-        }
-        return;
-    }
-
-    method void moverAbajoIzq() {
-        if ((y < (254 - r)) & (x > (0 + r))) {
-            do Screen.setColor(false);
-            do Screen.drawCircle(x, y, r);
-            let x = x - 1;
-            let y = y + 1;
-            do Screen.setColor(true);
-            do Screen.drawCircle(x, y, r);
-            do velocidad();
-        }
-        return;
-    }*/
-    
     //method int movimientoAutomatico() {
         /*
         0 -> ArrDer
