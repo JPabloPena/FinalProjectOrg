@@ -1,13 +1,14 @@
 class JuegoVaqueros {
     field Vaquero vaquero1, vaquero2, vaquero3, vaquero4;
-    field Bala bala1;
+    field Bala bala;
+    field int cont1, cont2, cont3, cont4;
 
     constructor JuegoVaqueros new() {
         let vaquero1 = Vaquero.new(0, 117, 20);
         let vaquero2 = Vaquero.new(245, 0, 20);
         let vaquero3 = Vaquero.new(491, 117, 20);
         let vaquero4 = Vaquero.new(245, 235, 20);
-        let bala1 = Bala.new(255, 127, 5);
+        
         return this;
     }
 
@@ -22,6 +23,7 @@ class JuegoVaqueros {
 
     method void run() {
         var char key;
+        var char kayBala;
         var boolean exit;  
         
         while (~exit) {
@@ -36,45 +38,214 @@ class JuegoVaqueros {
     }
 
     method void movVaquero1(char key) {
+        var boolean temp;
+
         if (key = 81) { //Letter: Q
             do vaquero1.moverArriba();
         }
         if (key = 65) { //Letter: A
             do vaquero1.moverAbajo();
         }
-        if (key = 90) {
-            do bala1.moverDerecha();            
+        while ((key = 87) & (cont1 < 11)) { //Letter: W            
+            if (~temp) {
+                let bala = Bala.new(vaquero1.coor_x_tam() + 1, vaquero1.coor_y_tam() - 12, 4);
+                let temp = true;
+                let cont1 = cont1 + 1;
+            }
+            do bala.moverArribaDer();
+            if (bala.coor_y() < 1) {
+                let key = 0;
+                do bala.borrar();
+            }
+            /*if (bala.coor_x_tam() = (vaquero2.coor_x() - 1) & (bala.coor_y() < vaquero2.coor_y_tam())) {
+                let key = 0;
+                do bala.borrar();
+            }*/            
         }
+        while ((key = 83) & (cont1 < 11)) { //Letter: S           
+            if (~temp) {
+                let bala = Bala.new(vaquero1.coor_x_tam() + 1, vaquero1.coor_y_tam() - 12, 4);
+                let temp = true;
+                let cont1 = cont1 + 1;
+            }
+            do bala.moverDerecha();
+            if (bala.coor_x_tam() > 509) {
+                let key = 0;
+                do bala.borrar();
+            }            
+        }
+        while ((key = 90) & (cont1 < 11)) { //Letter: Z            
+            if (~temp) {
+                let bala = Bala.new(vaquero1.coor_x_tam() + 1, vaquero1.coor_y_tam() - 12, 4);
+                let temp = true;
+                let cont1 = cont1 + 1;
+            }
+            do bala.moverAbajoDer();
+            if (bala.coor_y_tam() > 253) {
+                let key = 0;
+                do bala.borrar();
+            }            
+        }
+        if (cont1 = 11) {
+            do bala.borrar();
+        }
+        let temp = false;
         return;
     }
 
     method void movVaquero2(char key) {
+        var boolean temp;
+
         if (key = 84) { //Letter: T
             do vaquero2.moverIzquierda();
         }
         if (key = 89) { //Letter: Y
             do vaquero2.moverDerecha();
         }
+        while ((key = 82) & (cont2 < 11)) { //Letter: R           
+            if (~temp) {
+                let bala = Bala.new(vaquero2.coor_x_tam() - 12, vaquero2.coor_y_tam() + 1, 4);
+                let temp = true;
+                let cont2 = cont2 + 1;
+            }
+            do bala.moverAbajoIzq();
+            if ((bala.coor_x() < 1) | (bala.coor_y_tam() > 253)) {
+                let key = 0;
+                do bala.borrar();
+            }           
+        }
+        while ((key = 71) & (cont2 < 11)) { //Letter: G           
+            if (~temp) {
+                let bala = Bala.new(vaquero2.coor_x_tam() - 12, vaquero2.coor_y_tam() + 1, 4);
+                let temp = true;
+                let cont2 = cont2 + 1;
+            }
+            do bala.moverAbajo();
+            if (bala.coor_y_tam() > 253) {
+                let key = 0;
+                do bala.borrar();
+            }            
+        }
+        while ((key = 85) & (cont2 < 11)) { //Letter: U            
+            if (~temp) {
+                let bala = Bala.new(vaquero2.coor_x_tam() - 12, vaquero2.coor_y_tam() + 1, 4);
+                let temp = true;
+                let cont2 = cont2 + 1;
+            }
+            do bala.moverAbajoDer();
+            if ((bala.coor_x_tam() > 509) | (bala.coor_y_tam() > 253)) {
+                let key = 0;
+                do bala.borrar();
+            }            
+        }
+        if (cont2 = 11) {
+            do bala.borrar();
+        }
+        let temp = false;
         return;
     }
 
     method void movVaquero3(char key) {
+        var boolean temp;
+
         if (key = 79) { //Letter: O
             do vaquero3.moverArriba();
         }
         if (key = 76) { //Letter: L
             do vaquero3.moverAbajo();
         }
+        while ((key = 73) & (cont3 < 11)) { //Letter: I
+            if (~temp) {
+                let bala = Bala.new(vaquero3.coor_x() - 5, vaquero3.coor_y_tam() - 12, 4);
+                let temp = true;
+                let cont3 = cont3 + 1;
+            }
+            do bala.moverArribaIzq();
+            if (bala.coor_y() < 1) {
+                let key = 0;
+                do bala.borrar();
+            }        
+        }
+        while ((key = 75) & (cont3 < 11)) { //Letter: K           
+            if (~temp) {
+                let bala = Bala.new(vaquero3.coor_x() - 5, vaquero3.coor_y_tam() - 12, 4);
+                let temp = true;
+                let cont3 = cont3 + 1;
+            }
+            do bala.moverIzquierda();
+            if (bala.coor_x() < 1) {
+                let key = 0;
+                do bala.borrar();
+            }            
+        }
+        while ((key = 77) & (cont3 < 11)) { //Letter: M
+            if (~temp) {
+                let bala = Bala.new(vaquero3.coor_x() - 5, vaquero3.coor_y_tam() - 12, 4);
+                let temp = true;
+                let cont3 = cont3 + 1;
+            }
+            do bala.moverAbajoIzq();
+            if (bala.coor_y_tam() > 253) {
+                let key = 0;
+                do bala.borrar();
+            }            
+        }
+        if (cont3 = 11) {
+            do bala.borrar();
+        }
+        let temp = false;
         return;
     }
 
     method void movVaquero4(char key) {
+        var boolean temp;
+
         if (key = 86) { //Letter: T
             do vaquero4.moverIzquierda();
         }
         if (key = 66) { //Letter: Y
             do vaquero4.moverDerecha();
         }
+        while ((key = 67) & (cont4 < 11)) { //Letter: C
+            if (~temp) {
+                let bala = Bala.new(vaquero4.coor_x_tam() - 12, vaquero4.coor_y() - 5, 4);
+                let temp = true;
+                let cont4 = cont4 + 1;
+            }
+            do bala.moverArribaIzq();
+            if ((bala.coor_x() < 1) | (bala.coor_y() < 1)) {
+                let key = 0;
+                do bala.borrar();
+            }           
+        }
+        while ((key = 72) & (cont4 < 11)) { //Letter: H           
+            if (~temp) {
+                let bala = Bala.new(vaquero4.coor_x_tam() - 12, vaquero4.coor_y() - 5, 4);
+                let temp = true;
+                let cont4 = cont4 + 1;
+            }
+            do bala.moverArriba();
+            if (bala.coor_y() < 1) {
+                let key = 0;
+                do bala.borrar();
+            }            
+        }
+        while ((key = 78) & (cont4 < 11)) { //Letter: N            
+            if (~temp) {
+                let bala = Bala.new(vaquero4.coor_x_tam() - 12, vaquero4.coor_y() - 5, 4);
+                let temp = true;
+                let cont4 = cont4 + 1;
+            }
+            do bala.moverArribaDer();
+            if ((bala.coor_x_tam() > 509) | (bala.coor_y() < 1)) {
+                let key = 0;
+                do bala.borrar();
+            }            
+        }
+        if (cont4 = 11) {
+            do bala.borrar();
+        }
+        let temp = false;
         return;
     }
 
@@ -84,90 +255,4 @@ class JuegoVaqueros {
         }
         return false;
     }
-    /*
-    method void run() {
-        var char key;
-        var char cont;
-        var boolean exit;
-        let exit = false;
-
-        while (~exit) {
-            let key = Keyboard.keyPressed();
-            while (key = 131) {
-                if (circulo.contador() < 8) {
-                    do pelota1();
-                }
-                if (circulo2.contador() < 8) {
-                    do pelota2();
-                }
-                if ((circulo.contador() = 8) & (circulo2.contador() = 8)) {
-                    let key = 0;
-                    let exit = true;
-                }          
-            }
-        }
-        return;
-    }
-    
-    method void pelota1() {
-        if (circulo.movimientoAutomatico() = 0) {
-            do circulo.moverArribaDer();
-        }
-        if (circulo.movimientoAutomatico() = 1) {
-            do circulo.moverArribaIzq();
-        }
-        if (circulo.movimientoAutomatico() = 2) {
-            do circulo.moverAbajoDer();
-        }
-        if (circulo.movimientoAutomatico() = 3) {
-            do circulo.moverAbajoIzq();
-        }
-        return;
-    }
-
-    method void pelota2() {
-        if (circulo2.movimientoAutomatico() = 0) {
-            do circulo2.moverArribaDer();
-        }
-        if (circulo2.movimientoAutomatico() = 1) {
-            do circulo2.moverArribaIzq();
-        }
-        if (circulo2.movimientoAutomatico() = 2) {
-            do circulo2.moverAbajoDer();
-        }
-        if (circulo2.movimientoAutomatico() = 3) {
-            do circulo2.moverAbajoIzq();
-        }
-        return;
-    }
-
-    method void juego() {
-        if (circulo.movimientoAutomatico() = 0) {
-            do circulo.moverArribaDer();
-        }
-        if (circulo.movimientoAutomatico() = 1) {
-            do circulo.moverArribaIzq();
-        }
-        if (circulo.movimientoAutomatico() = 2) {
-            do circulo.moverAbajoDer();
-        }
-        if (circulo.movimientoAutomatico() = 3) {
-            do circulo.moverAbajoIzq();
-        }*/
-        /* CIRCULO 2*/
-        /*
-        if (circulo2.movimientoAutomatico() = 0) {
-            do circulo2.moverArribaDer();
-        }
-        if (circulo2.movimientoAutomatico() = 1) {
-            do circulo2.moverArribaIzq();
-        }
-        if (circulo2.movimientoAutomatico() = 2) {
-            do circulo2.moverAbajoDer();
-        }
-        if (circulo2.movimientoAutomatico() = 3) {
-            do circulo2.moverAbajoIzq();
-        }
-        return;
-    }*/
 }
