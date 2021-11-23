@@ -200,10 +200,10 @@ class JuegoVaqueros {
     method void movVaquero4(char key) {
         var boolean temp;
 
-        if (key = 86) { //Letter: T
+        if (key = 86) { //Letter: V
             do vaquero4.moverIzquierda();
         }
-        if (key = 66) { //Letter: Y
+        if (key = 66) { //Letter: B
             do vaquero4.moverDerecha();
         }
         while ((key = 67) & (cont4 < 11)) { //Letter: C

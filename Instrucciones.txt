@@ -1,0 +1,35 @@
+-----|| VAQUERO 1 (IZQUIERDA) ||-----
+MOVERSE:
+    Q : Arriba
+    A : Abajo
+DISPARAR:
+    W : ↗
+    S : →
+    Z : ↘
+
+-----|| VAQUERO 2 (ARRIBA) ||-----
+MOVERSE:
+    T -: Izquierda
+    Y -: Derecha
+DISPARAR:
+    R : ↙
+    G : ↓
+    U : ↘ 
+
+-----|| VAQUERO 3 (DERECHA) ||-----
+MOVERSE:
+    O : Arriba
+    L : Abajo
+DISPARAR:
+    I : ↖
+    K : ←
+    M : ↙
+
+-----|| VAQUERO 4 (ABAJO) ||-----
+MOVERSE:
+    V : Izquierda
+    B : Derecha
+DISPARAR:
+    C : ↖
+    H : ↑
+    N : ↗
