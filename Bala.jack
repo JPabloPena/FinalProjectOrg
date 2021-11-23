@@ -45,7 +45,7 @@ class Bala {
     }
     
     method void moverArribaIzq() {
-        if ((y > 0) & (x > (0 + tamano))) {
+        if ((y > 0) & (x > 0)) {
             do Screen.setColor(false);
             do Screen.drawRectangle(x, y, x + tamano, y + tamano);
             let x = x - 1;
